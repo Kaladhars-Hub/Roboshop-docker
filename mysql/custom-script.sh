@@ -1,11 +1,13 @@
-# FROM mysql:8.0
-# ENV MYSQL_ROOT_PASSWORD="RoboShop@1"
-# COPY db/ /docker-entrypoint-initdb.d
+#!/bin/bash
 
+if [ -f /tmp/mysql-root-password.txt ]; then
+    PASSWORD=$(cat /tmp/mysql-root-password.txt)
+    echo "Accessed MySQL root password"
+else
+    echo "MySQL Root password file not found"
+    exit 1
+fi
 
-# Created as part of K8 init containers
-FROM mysql:8.0
-COPY db/ /docker-entrypoint-initdb.d
-COPY custom-script.sh /usr/local/bin/custom-script.sh
-RUN chmod +x /usr/local/bin/custom-script.sh
-ENTRYPOINT ["/usr/local/bin/custom-script.sh"]
+export MYSQL_ROOT_PASSWORD=$PASSWORD
+rm -rf /tmp/mysql-root-password.txt
+exec /entrypoint.sh mysqld
