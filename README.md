@@ -229,7 +229,7 @@ docker system df              # check Docker disk usage
 
 ## 👤 Author
 
-**Kaladhar** · [GitHub](https://github.com/Kaladhars-Hub) · [LinkedIn](linkedin.com/in/kaladharknights/)
+**Kaladhar** · [GitHub](https://github.com/Kaladhars-Hub) · [LinkedIn](https://www.linkedin.com/in/kaladharknights)
 
 > Built as part of a hands-on DevOps learning journey.
 > Next: deploying this same application on **Kubernetes (EKS)**.
